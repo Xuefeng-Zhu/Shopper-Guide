@@ -3,8 +3,8 @@
 /* Controllers */
 
 angular.module('myApp.controllers', []).
-controller('MainCtrl', ['$scope', 'ZapposApi',
-    function($scope, ZapposApi) {
+controller('MainCtrl', ['$scope', 'ZapposApi', 'Categories',
+    function($scope, ZapposApi, Categories) {
         $scope.items = []
 
         $scope.$watch('quantity', function() {
@@ -25,6 +25,16 @@ controller('MainCtrl', ['$scope', 'ZapposApi',
                 .then(function(res) {
                     return res.data.results;
                 });
+        }
+
+        $scope.submit = function(){
+        	angular.forEach($scope.items, function(value, key){
+        		if (!value.category){
+        			value.category = Categories.get();
+        		}
+        	});
+
+        	console.log($scope.items);
         }
     }
 ]);

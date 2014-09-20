@@ -7,8 +7,10 @@ angular.module('myApp', [
   'ngAnimate', 
   'ngSanitize',
   'mgcrea.ngStrap',
+  // 'debounce',
   'myApp.services',
-  'myApp.controllers',
+  'myApp.controllers'
+  
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
