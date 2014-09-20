@@ -34,7 +34,11 @@ controller('MainCtrl', ['$scope', 'ZapposApi', 'Categories',
         		}
         	});
 
-        	console.log($scope.items);
+        	ZapposApi.search("shoes", 100)
+        	.then(function(res){
+        		console.log(res.data);
+        	})
+
         }
     }
 ]);
