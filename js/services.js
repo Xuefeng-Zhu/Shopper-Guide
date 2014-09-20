@@ -19,9 +19,16 @@ angular.module('myApp.services', [])
  			});
  		},
  		search: function(term, price){
- 			return $http.jsonp(url + 'Search?term=' + term +
- 					'&filters={"price":["' + parseFloat(price) + '.0"]}&sort={"recentSales":"desc"}&limit=1&callback=JSON_CALLBACK&key=' + key
- 					)
+ 			return $http.jsonp(url + 'Search', {
+ 				params: {
+ 					term: term,
+ 					filters: '{"price"["' + price + '.0"]}',
+ 					sort: '{"recentSales":"desc"}',
+ 					limit: 1,
+ 					callback: "JSON_CALLBACK",
+ 					key: key
+ 				}
+ 			})
  		}
  		
  	};
