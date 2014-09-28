@@ -66,8 +66,15 @@ controller('MainCtrl', ['$scope', 'ZapposApi', 'Categories',
                     }
                     else{
                         $scope.items[index].result = results[0];
-                        var randomCost = meanCost + restMoney;
-                        restMoney = 0;
+
+                        if (index + 1 == $scope.items.length){
+                              var randomCost = meanCost + restMoney;
+                              restMoney = 0;
+                        }
+                        else{
+                            var randomCost = Math.round(Math.random() * (meanCost + restMoney));
+                            restMoney = meanCost + restMoney - randomCost;
+                        }
                         searchItem(index + 1, meanCost, randomCost, restMoney);
                         console.log($scope.items)
                     }
