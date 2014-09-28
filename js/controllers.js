@@ -67,7 +67,7 @@ controller('MainCtrl', ['$scope', 'ZapposApi', 'Categories',
                     else{
                         $scope.items[index].result = results[0];
 
-                        if (index + 1 == $scope.items.length){
+                        if (index == $scope.items.length - 2){
                               var randomCost = meanCost + restMoney;
                               restMoney = 0;
                         }
