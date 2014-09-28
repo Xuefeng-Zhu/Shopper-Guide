@@ -34,7 +34,7 @@ angular.module('myApp.services', [])
  	};
  }])
  .factory('Categories', [function(){
- 	var categories = ["shoes", "clothing", "bags", "handgabs", "sneakers", "sandals", "jeans", "dresses"];
+ 	var categories = ["shoes", "clothing", "bags", "handbags", "sneakers", "sandals", "jeans", "dresses"];
  	return {
  		get : function(){
  			return categories[Math.floor(Math.random() * categories.length)];

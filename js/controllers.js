@@ -27,18 +27,45 @@ controller('MainCtrl', ['$scope', 'ZapposApi', 'Categories',
                 });
         }
 
-        $scope.submit = function(){
-        	angular.forEach($scope.items, function(value, key){
-        		if (!value.category){
-        			value.category = Categories.get();
-        		}
-        	});
+        $scope.submit = function() {
+            angular.forEach($scope.items, function(value, key) {
+                if (!value.category) {
+                    value.category = Categories.get();
+                }
+            });
 
-        	ZapposApi.search("shoes", 100)
-        	.then(function(res){
-        		console.log(res.data);
-        	})
+            loadItems($scope.cost);
+        }
 
+        function loadItems(cost) {
+            var count = $scope.items.length;
+            var meanCost = Math.round(cost / count);
+
+            var randomCost = Math.round(Math.random() * meanCost);
+            var restMoney = meanCost - randomCost;
+            searchItem(0, meanCost, randomCost, restMoney);
+
+        }
+
+        function searchItem(index, meanCost, cost, restMoney) {
+            if (index == $scope.items.length) {
+                return;
+            }
+
+            ZapposApi.search($scope.items[index].category, cost)
+                .then(function(res) {
+                    var results = res.data.results;
+                    if (results.length == 0){
+                        searchItem(index, meanCost, cost + 1, restMoney - 1);
+                    }
+                    else{
+                        $scope.items[index].result = results[0];
+                        var randomCost = meanCost + restMoney;
+                        restMoney = 0;
+                        searchItem(index + 1, meanCost, randomCost, restMoney);
+                        console.log($scope.items)
+                    }
+                })
         }
     }
 ]);

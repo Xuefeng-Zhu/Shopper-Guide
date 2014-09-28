@@ -3,13 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Shopper Guide</title>
-    <link rel="stylesheet" href="css/app.css"/>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/bootflat.min.css"/>
+    <link rel="stylesheet" href="css/app.css"/>
   </head>
   <body style="height: 100%" ng-controller="MainCtrl">
     <!-- <div class="row"> -->
-
     <div class="col-md-2" style="height: 100%; padding:0">
       <div class="panel panel-primary" style="height: 100%; margin: 0; overflow-y:scroll">
         <div class="panel-heading">
@@ -34,7 +33,28 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-10">
+      <section class="search-results" ng-show="items[0].result">
+        <h2>Results</h2>        
+          <div class="hotel" ng-repeat="item in items">
+            <div class="thumbnail">
+              <img src="{{item.result.thumbnailImageUrl}}" class="img-responsive" alt="{{item.result.productName}}">
+            </div>
+            <div class="content">
+              <div class="deals">
+                <p>
+                <span class="price">{{item.result.price}}</span>
+                </p>
+                <a href="" class="btn btn-primary">View deals</a>
+              </div>
+              <h3>{{item.result.productName}}</h3>
+              <p class="label label-default">{{item.result.brandName}}</p> 
+              <p class="highlights">
+                <span>“Modern hotel”</span>
+              </p>
+            </div>
+        </div>
+      </section>
     </div>
     
     <!-- js -->
@@ -45,10 +65,9 @@
     <script src="lib/angular/angular-route.min.js"></script>
     <script src="lib/angular/angular-animate.min.js"></script>
     <script src="lib/angular/angular-sanitize.min.js"></script>
-
     <!-- Angular module -->
-<!--     <script src="bower_components/ng-debounce/angular-debounce.js"></script>
- -->    <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
+    <!--     <script src="bower_components/ng-debounce/angular-debounce.js"></script>
+    -->    <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
     <script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
     <!-- Angular script   -->
     <script src="js/app.js"></script>
