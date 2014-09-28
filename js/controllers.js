@@ -41,6 +41,7 @@ controller('MainCtrl', ['$scope', 'ZapposApi', 'Categories',
             var count = $scope.items.length;
             var meanCost = Math.round(cost / count);
 
+           // if ($scope.items.length != 1){}
             var randomCost = Math.round(Math.random() * meanCost);
             var restMoney = meanCost - randomCost;
             searchItem(0, meanCost, randomCost, restMoney);

@@ -45,12 +45,12 @@
                 <p>
                 <span class="price">{{item.result.price}}</span>
                 </p>
-                <a href="" class="btn btn-primary">View deals</a>
+                <a href="{{item.result.productUrl}}" target="_blank" class="btn btn-primary">View deals</a>
               </div>
               <h3>{{item.result.productName}}</h3>
               <p class="label label-default">{{item.result.brandName}}</p> 
               <p class="highlights">
-                <span>“Modern hotel”</span>
+                <span class="badge badge-danger">{{item.result.percentOff}} Off</span>
               </p>
             </div>
         </div>
